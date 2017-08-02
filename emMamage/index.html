@@ -8,15 +8,51 @@
     <script>
         $(function () {
             $.post(
-                "EmShow.ashx",
+                "EmShowInfo.ashx",
                 {
 
                 },
                 function (data,status) {
                     if (status == "success") {
-                        $("#ta").html(data);
+                        $("table").html(data);
                     }
                 });
+
+
+            $("#btnAdd").click(function () {
+                $.post(
+                "AddEmShow.ashx",
+                {
+                    Name: $("#UserName").val(),
+                    Age: $("#UserAge").val(),
+                    EmType: $("#position").val()
+                },
+                function (data, status) {
+                    if (status == "success") {
+                        alert("添加成功");
+                        window.location.href = "index.html"
+                    } else {
+                        alert("添加失败");
+                    }
+                });
+            })
+
+
+            $("#btnDelete").click(function () {
+                $.post(
+                "DeleteEmShow.ashx",
+                {
+                    name: $("table input:checkbox:checked").parent().siblings().first().text()
+                },
+                function (data, status) {
+                    if (status == "success") {
+                        alert("删除成功");
+                        window.location.reload();
+                    } else {
+                        alert("删除失败");
+                    }
+                });
+            })
         });
     </script>
     <style>
@@ -101,7 +137,7 @@
             <legend><strong>员工管理</strong></legend>
 
             <table>
-                <thead id="ta">
+                <thead>
                     <tr>
                         <th><input type="checkbox" id="all"></th>
                         <th>姓名</th>
@@ -110,7 +146,7 @@
                         <th>操作</th>
                     </tr>
                 </thead>
-                <tbody id="ta"></tbody>
+            
             </table>
             <div id="control">
                 <button class="btn" id="btnDelete">删除信息</button>

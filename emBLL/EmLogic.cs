@@ -14,5 +14,16 @@ namespace emBLL
         {
             return EmService.GetShow();
         }
+
+        public static int AddEm(em e)
+        {
+            return EmService.AddEm(e);
+        }
+
+        public static int DeleteEm(em e)
+        {
+            return EmService.DeleteEm(e);
+        }
+
         }
 }

@@ -28,5 +28,31 @@ namespace emDAL
 
             return list;
         }
+
+        public static int AddEm(em e) {
+            string sql = @"INSERT INTO dbo.em
+                           ( name, age, emtype )
+                            VALUES  (@name,
+                                     @age, 
+                                     @emtype   )";
+
+            SqlParameter[] pa = new SqlParameter[] {
+                new SqlParameter("@name",e.Name),
+                new SqlParameter("@age",e.Age),
+                new SqlParameter("@emtype",e.EmType)
+            };
+
+            int num = SqlHelper.ExecuteNonQuery(CommandType.Text,sql,pa);
+            return num;
+        }
+
+
+        public static int DeleteEm(em e) {
+            string sql = "DELETE FROM dbo.em WHERE name=@name";
+            SqlParameter[] pa = new SqlParameter[] {
+                new SqlParameter("@name",e.Name)
+        }; 
+            return SqlHelper.ExecuteNonQuery(CommandType.Text,sql,pa);
+        }
     }
 }

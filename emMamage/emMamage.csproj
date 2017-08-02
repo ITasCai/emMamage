@@ -98,7 +98,9 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="EmShow.ashx" />
+    <Content Include="EmShowInfo.ashx" />
+    <Content Include="AddEmShow.ashx" />
+    <Content Include="DeleteEmShow.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -114,8 +116,14 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EmShow.ashx.cs">
-      <DependentUpon>EmShow.ashx</DependentUpon>
+    <Compile Include="AddEmShow.ashx.cs">
+      <DependentUpon>AddEmShow.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="DeleteEmShow.ashx.cs">
+      <DependentUpon>DeleteEmShow.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="EmShowInfo.ashx.cs">
+      <DependentUpon>EmShowInfo.ashx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
